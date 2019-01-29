@@ -7,28 +7,36 @@ SELECT * FROM albums;
 > Récupérer tous les albums dont le titre contient "Great" (get the album with the title "Great")
 
 ```sql
+SELECT * FROM albums WHERE Title LIKE "%Great%";
+```
 
+> Donner le nombre total d'albums contenus dans la base (counting all the albums)
+
+```sql
+SELECT COUNT(albumid) FROM albums;
 
 ```
 
-> Donner le nombre total d'albums contenus dans la base (sans regarder les id bien sûr)
+> Supprimer tous les albums dont le nom contient "music"(delete the albums contains the name "music")
 
 ```sql
+DELETE  FROM albums WHERE Title LIKE "%music%";
+
 ```
 
-> Supprimer tous les albums dont le nom contient "music"
+> Récupérer tous les albums écrits par AC/DC (get all the album written by AC/DC)
 
 ```sql
+SELECT * FROM albums JOIN artists on artists.ArtistId = albums.ArtistId WHERE Name = "AC/DC"; 
 ```
 
-> Récupérer tous les albums écrits par AC/DC
+> Récupérer tous les titres des albums de AC/DC (get all the titles of the all the albums of AC/DC)
 
 ```sql
-```
-
-> Récupérer tous les titres des albums de AC/DC
-
-```sql
+SELECT * FROM
+albums
+    INNER JOIN tracks ON albums.albumid = tracks.albumid
+    INNER JOIN artists ON artists.artistid = albums.artistid WHERE   ;
 ```
 
 > Récupérer la liste des titres de l'album "Let There Be Rock"
