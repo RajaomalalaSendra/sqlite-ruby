@@ -33,20 +33,37 @@ SELECT * FROM albums JOIN artists on artists.ArtistId = albums.ArtistId WHERE Na
 > Récupérer tous les titres des albums de AC/DC (get all the titles of the all the albums of AC/DC)
 
 ```sql
-SELECT * FROM
-albums
-    INNER JOIN tracks ON albums.albumid = tracks.albumid
-    INNER JOIN artists ON artists.artistid = albums.artistid WHERE   ;
+SELECT 
+    trackid,
+    tracks.name AS track,
+    albums.title AS album,
+    artists.name AS artist
+FROM
+tracks
+    INNER JOIN albums ON albums.AlbumId = tracks.AlbumId
+    INNER JOIN artists ON artists.ArtistId = albums.ArtistId WHERE artists.Name LIKE "AC/DC" ;
 ```
 
-> Récupérer la liste des titres de l'album "Let There Be Rock"
+> Récupérer la liste des titres de l'album "Let There Be Rock" (get all the titles of the album "Let There Be Rock")
 
 ```sql
+SELECT 
+    tracks.name AS title,
+    albums.title AS album
+FROM
+    tracks
+    JOIN albums ON albums.AlbumId = tracks.AlbumId WHERE albums.Title LIKE "Let There Be Rock";
 ```
 
-> Afficher le prix de cet album ainsi que sa durée totale
+> Afficher le prix de cet album ainsi que sa durée totale (get the price of this album and the total duration)
 
 ```sql
+SELECT 
+    tracks.UnitPrice AS price,
+    SUM(tracks.Milliseconds) AS total_duration
+FROM
+    tracks
+    INNER JOIN albums ON albums.AlbumId = tracks.AlbumId WHERE albums.Title LIKE "Let There Be Rock";
 ```
 
 > Afficher le coût de l'intégralité de la discographie de "Deep Purple"
