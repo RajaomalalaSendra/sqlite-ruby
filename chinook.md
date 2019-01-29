@@ -66,12 +66,21 @@ FROM
     INNER JOIN albums ON albums.AlbumId = tracks.AlbumId WHERE albums.Title LIKE "Let There Be Rock";
 ```
 
-> Afficher le coût de l'intégralité de la discographie de "Deep Purple"
+> Afficher le coût de l'intégralité de la discographie de "Deep Purple" (show the whole price of the discographie "Deep Purple")
 
 ```sql
+SELECT 
+    SUM(tracks.UnitPrice) As total_price
+FROM
+    tracks
+    INNER JOIN albums ON albums.AlbumId = tracks.AlbumId 
+    INNER JOIN artists ON artists.ArtistId = albums.ArtistId WHERE artists.Name LIKE "Deep Purple"; 
 ```
 
 > Créer l'album de ton artiste favori en base, en renseignant correctement les trois tables albums, artists et tracks
+( creation of the base of the favorite artists and gibve the table album, the artist and the track)
 
 ```sql
+SELECT * FROM
+albums, artists, tracks WHERE artists.Name Like "Roger Norr";
 ```
