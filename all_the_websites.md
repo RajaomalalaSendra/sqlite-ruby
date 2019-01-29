@@ -1,4 +1,5 @@
 - The MOOCademy
+
 > creation of the table 'courses'
 ```sql
 CREATE TABLE IF NOT EXISTS courses (
@@ -7,6 +8,7 @@ CREATE TABLE IF NOT EXISTS courses (
 'description_course' TEXT );
 ```
 > creation of the table 'lessons'
+
 ```sql
 CREATE TABLE IF NOT EXISTS lessons (
 'id_lesson' INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -31,6 +33,7 @@ CREATE TABLE IF NOT EXISTS comment_pin (
 FOREIGN KEY (pin_id) REFERENCES create_pins(id_pin) );
 ```
 - The Hacking News
+
 > creation of the table message
 ```sql
 CREATE TABLE IF NOT EXISTS message (
@@ -65,12 +68,13 @@ CREATE TABLE IF NOT EXISTS courses (
 	'course_name' TEXT
 );
 ```
- creation of the table users
+> creation of the table users
+
 ```sql
 CREATE TABLE IF NOT EXISTS users (
    'id_user' INTEGER PRIMARY KEY AUTOINCREMENT,
    'user_name' TEXT,
    'course_id' INTEGER NOT NULL,
   	FOREIGN KEY (course_id) REFERENCES courses(id_courses) 
-   )
+   );
 ```
